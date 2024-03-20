@@ -1,6 +1,10 @@
 const {Schema, model} = require("mongoose");
 
 const blogSchema = new Schema({
+    descreption:{
+        type:String,
+        required: true,
+    },
     title:{
         type: String,
         required: true,
@@ -13,7 +17,7 @@ const blogSchema = new Schema({
         type: String,
         required: false,
     },
-    createBy:{
+    createdBy:{
         type: Schema.Types.ObjectId,
         ref: "user",
     },

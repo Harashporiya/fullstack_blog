@@ -6,6 +6,7 @@ import Signup from './Signup'
 import Home from './Home'
 import AddBlog from './AddBlog'
 import Blog from './Blog'
+import Showbody from './Showbody'
 function Router() {
   return (
     <div>
@@ -17,6 +18,7 @@ function Router() {
         <Route path="/home" element={<Home/>} />
         <Route path='/addblog' element={<AddBlog/>} />
         <Route path='/blog' element={<Blog/>}/>
+        <Route path='/showbody/:blogId' element={<Showbody/>} />
      </Routes>
       </BrowserRouter>
     </div>

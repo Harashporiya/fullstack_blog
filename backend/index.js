@@ -2,7 +2,7 @@ const express = require("express")
 const mongoose = require("mongoose");
 const router = require("./route/user");
 const PORT = 5000;
-
+const blogRouter = require("./route/blog")
 
 const jwt = require("jsonwebtoken")
 
@@ -39,5 +39,5 @@ app.get("/user/data", async (req,res)=>{
 })
 
 app.use("/user",router)
-
+app.use("/blog",blogRouter)
 app.listen(PORT,()=>console.log(`Server Started at PORT: ${PORT}`))

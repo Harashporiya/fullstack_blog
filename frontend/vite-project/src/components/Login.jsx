@@ -21,7 +21,7 @@ function Login() {
         password,
       });
       console.log(response.data);
-      Cookies.set("authorisation",response.data.token);
+      Cookies.set("token",response.data.token);
         navigate("/home")
       toast.info(response.data.message, {
         position: "top-right"
