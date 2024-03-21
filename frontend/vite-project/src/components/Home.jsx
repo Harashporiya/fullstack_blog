@@ -2,33 +2,19 @@ import React, { useEffect, useState } from 'react';
 import Navbar from './Navbar';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import Cookies from 'js-cookie';
+
 import './index.css';
 import { FaRegThumbsUp } from "react-icons/fa";
 import { FaRegThumbsDown } from "react-icons/fa6";
 
 function Home() {
   const navigate = useNavigate();
-  const [userData, setUserData] = useState({});
+ 
   const [blogs, setBlogs] = useState([]);
   const [likes, setLikes] = useState({}); 
   const [dislikes, setdisLikes] = useState({});
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const token = Cookies.get("authorisation");
-        const response = await axios.get("http://localhost:5000/user/data", {
-          headers: { authorisation: token }
-        });
-        setUserData(response.data);
-      } catch (error) {
-        navigate('/login');
-        console.log("Error", error);
-      }
-    };
-    fetchData();
-  }, [navigate]);
+ 
 
   useEffect(() => {
     const fetchData = async () => {
@@ -75,13 +61,15 @@ function Home() {
       <div className='pt-40 bg-gray-900 min-h-screen p-8'>
         <div>
           {blogs.map((blog) => (
-            <div key={blog._id} className='overflow-hidden mx-4 my-4 flex justify-between'>
+            <div key={blog._id} id='card' className='overflow-hidden mx-4 my-4 flex justify-between'>
               <div className='p-4 pt-10'>
                 <div onClick={() => handleShowBody(blog._id)}>
+                
                   <h4 className='text-white font-semibold mb-2'>{blog.title}</h4>
                   <p className='text-gray-300 font-semibold'>{blog.descreption}</p>
-                  <p className='text-gray-500 font-semibold'>{blog.createdAt}</p>
+                
                 </div>
+                <p className='text-gray-500 font-semibold'>{blog.createdAt}</p>
                 <div className='text-white flex justify-between w-20 pt-6 '>
                 <FaRegThumbsUp className='text-white ' onClick={() => handleLikeClick(blog._id)} />
                 <span className='text-white'>{likes[blog._id]}</span>

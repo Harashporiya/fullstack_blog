@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Navbar from './Navbar';
 import axios from 'axios';
 import Cookies from 'js-cookie'
-
+import { Link } from 'react-router-dom';
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -55,7 +55,15 @@ export default function Signup() {
       <div className='bg-gray-900 min-h-screen flex justify-center items-center'>
 
         <form onSubmit={handleSubmit} className="max-w-sm mx-auto">
+        <p className='mb-9 text-white font-semibold text-2xl'>Signup to create an account</p>
           <div className="mb-5">
+
+          <div>
+            <p className='mb-4 text-white font-semibold text-xl'>
+            Already have an account? <Link to="/login" className="text-blue-500">Login</Link>
+            </p>
+          </div>
+
             <label htmlfor="name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">First Name</label>
             <input value={firstname} onChange={(e) => setFirstname(e.target.value)} type="text" id="name" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white  dark:shadow-sm-light" placeholder="Enter your first name"  />
           </div>

@@ -3,6 +3,7 @@ import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { useNavigate } from 'react-router-dom';
+import Logout from './Logout';
 import './index.css'
 
 function Navbar() {
@@ -32,6 +33,8 @@ function Navbar() {
               <button id='signup' onClick={() => navigate("/signup")} type="button" className=" text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-lg px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 ">SignUp</button>
 
               <button id="login" onClick={() => navigate("/login")} type="button" className="text-white bg-blue-700 hover:bg-blue-800  font-medium rounded-lg text-lg px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 ">Login</button>
+              {/* <br/>
+              <Logout/> */}
             </div>
             <button type="button" className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100  dark:text-gray-400 dark:hover:bg-gray-700 " >
               <span className="sr-only">Open main menu</span>

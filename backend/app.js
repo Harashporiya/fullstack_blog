@@ -1,7 +1,9 @@
+require('dotenv').config()
+
 const express = require("express") 
 const mongoose = require("mongoose");
 const router = require("./route/user");
-const PORT = 5000;
+
 const blogRouter = require("./route/blog")
 
 const jwt = require("jsonwebtoken")
@@ -13,14 +15,13 @@ const User = require("./modle/user");
 const app = express();
 
 
+const PORT = process.env.PORT || 5000;
+
 app.use(cors());
 app.use(express.json())
-mongoose.connect("mongodb://127.0.0.1:27017/blog")
+mongoose.connect(process.env.MONGO_URL)
 .then(()=>console.log("MongoDB Connected"))
 
-// app.get("/user", (req, res)=>{
-//     return res.send("harash")
-// })
 
 
 app.get("/user/data", async (req,res)=>{
@@ -40,4 +41,5 @@ app.get("/user/data", async (req,res)=>{
 
 app.use("/user",router)
 app.use("/blog",blogRouter)
+
 app.listen(PORT,()=>console.log(`Server Started at PORT: ${PORT}`))
