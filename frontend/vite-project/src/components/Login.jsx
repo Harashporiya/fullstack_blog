@@ -20,12 +20,13 @@ function Login() {
         email,
         password,
       });
-      console.log(response.data);
-      Cookies.set("token",response.data.token);
-        navigate("/home")
       toast.info(response.data.message, {
         position: "top-right"
       });
+      console.log(response.data);
+      Cookies.set("authorisation",response.data.token);
+        navigate("/home")
+     
       
       setEmail("");
       setPassword("");

@@ -62,4 +62,21 @@ router.post("/add-new", async (req, res) => {
   }
 });
 
+
+
+router.get('/get/user', async (req, res) => {
+ 
+  const userId = req.user.id;
+  try {
+   
+    const blogs = await Blog.find({ user: userId });
+    res.json(blogs);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+
+
+
 module.exports = router;

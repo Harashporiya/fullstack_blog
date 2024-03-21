@@ -6,7 +6,7 @@ const jwt = require("jsonwebtoken")
 const secretKey = "jbvieublvdubfvldfbvliufbvdufb";
 
 router.post("/signup", async (req, res) => {
-    const { firstname, lastname, email, password } = req.body;
+    const { firstname, lastname, email, password, profileImageURL } = req.body;
  
     try {
         const createdUser = await User.create({
@@ -14,6 +14,7 @@ router.post("/signup", async (req, res) => {
             lastname: lastname,
             email: email,
             password: password,
+            profileImageURL:profileImageURL,
         });
         const token = await jwt.sign({ userId: createdUser._id },secretKey, {expiresIn: "5d"} )
         return res.status(201).json({token,createdUser, message:"User Created Succesfully"});

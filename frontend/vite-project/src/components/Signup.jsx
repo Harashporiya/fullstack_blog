@@ -14,6 +14,7 @@ export default function Signup() {
   const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+ 
 
   const navigate = useNavigate();
   
@@ -25,7 +26,9 @@ export default function Signup() {
         lastname,
         email,
         password,
+        
       });
+      console.log(password)
       console.log(response.data);
       Cookies.set("authorisation", response.data.token)
      navigate("/home")
@@ -68,6 +71,8 @@ export default function Signup() {
             <label htmlfor="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
             <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" id="password" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white  dark:shadow-sm-light" placeholder='Enter your password' required />
           </div>
+
+         
         
           <div className="flex items-start mb-5">
             <div className="flex items-center h-5">

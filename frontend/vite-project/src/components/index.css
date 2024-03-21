@@ -4,3 +4,28 @@
    
     width: 900px;
 }
+#img1{
+    /* margin-left: 400px; */
+    /* width: 500px;
+    height: 250px; */
+    
+}
+#card{
+    /* width: 1000px; */
+    /* margin-left: 400px; */
+     /* display: flex;
+  justify-content: space-evenly; */
+   
+}
+#profileImage{
+    width: 200px;
+}
+
+@media only screen and (max-width:770px) and (min-width:0px){
+    #login{
+        display: none;
+    }
+    #signup{
+        display: none;
+    }
+}

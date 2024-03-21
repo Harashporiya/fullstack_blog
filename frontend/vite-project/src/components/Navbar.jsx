@@ -3,7 +3,7 @@ import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { useNavigate } from 'react-router-dom';
-
+import './index.css'
 
 function Navbar() {
   const navigate = useNavigate();
@@ -29,9 +29,9 @@ function Navbar() {
           </a>
           <div className="flex md:order-2 space-x-3 md:space-x-0 ">
             <div className='space-x-6'>
-              <button onClick={() => navigate("/signup")} type="button" className=" text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-lg px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 ">SignUp</button>
+              <button id='signup' onClick={() => navigate("/signup")} type="button" className=" text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-lg px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 ">SignUp</button>
 
-              <button onClick={() => navigate("/login")} type="button" className="text-white bg-blue-700 hover:bg-blue-800  font-medium rounded-lg text-lg px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 ">Login</button>
+              <button id="login" onClick={() => navigate("/login")} type="button" className="text-white bg-blue-700 hover:bg-blue-800  font-medium rounded-lg text-lg px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 ">Login</button>
             </div>
             <button type="button" className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100  dark:text-gray-400 dark:hover:bg-gray-700 " >
               <span className="sr-only">Open main menu</span>
@@ -60,11 +60,11 @@ function Navbar() {
               >
                 {/* <MenuItem onClick={handleClose}>Profile</MenuItem> */}
 
-                <MenuItem onClick={handleClose}>Home</MenuItem>
-                <MenuItem onClick={handleClose}>Add Blog</MenuItem>
-                <MenuItem onClick={handleClose}>Blog</MenuItem>
-                <MenuItem onClick={handleClose}>Signup</MenuItem>
-                <MenuItem onClick={handleClose}>Logout</MenuItem>
+                <MenuItem onClick={()=>{handleClose(); navigate("/home");}}>Home</MenuItem>
+                <MenuItem onClick={()=>{handleClose(); navigate("/addblog");}}>Add Blog</MenuItem>
+                <MenuItem onClick={()=>{handleClose(); navigate("/blog");}}>Blog</MenuItem>
+                <MenuItem onClick={()=>{handleClose();navigate("/signup");}}>Signup</MenuItem>
+                <MenuItem onClick={()=>{handleClose();navigate("/login");}}>Login</MenuItem>
               </Menu>
             </button>
           </div>
