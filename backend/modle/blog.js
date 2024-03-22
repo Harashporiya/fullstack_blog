@@ -1,27 +1,27 @@
-const {Schema, model} = require("mongoose");
+const { Schema, model } = require("mongoose");
 
 const blogSchema = new Schema({
-    descreption:{
-        type:String,
-        required: true,
-    },
-    title:{
+    descreption: {
         type: String,
         required: true,
     },
-    body:{
+    title: {
         type: String,
         required: true,
     },
-    coverImageURL:{
+    body: {
+        type: String,
+        required: true,
+    },
+    coverImageURL: {
         type: String,
         required: false,
     },
-    createdBy:{
+    createdBy: {
         type: Schema.Types.ObjectId,
         ref: "user",
     },
-}, {timestamps:true})
+}, { timestamps: true })
 
 
 const Blog = model("blog", blogSchema);

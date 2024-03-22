@@ -2,7 +2,7 @@
 
  /* margin-left: 400px; */
    
-    /* width: 900px; */
+    width: 700px;
 }
 
 
@@ -24,4 +24,8 @@
     #card{
         display: block;
     }
+}
+#send{
+    height: 300px;
+    width: 400px;
 }

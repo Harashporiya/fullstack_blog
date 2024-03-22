@@ -11,15 +11,15 @@ function Router() {
   return (
     <div>
       <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<App/>}/>
-        <Route path="/login" element={<Login/>}/>
-        <Route path="/signup" element={<Signup/>} />
-        <Route path="/home" element={<Home/>} />
-        <Route path='/addblog' element={<AddBlog/>} />
-        <Route path='/blog' element={<Blog/>}/>
-        <Route path='/showbody/:blogId' element={<Showbody/>} />
-     </Routes>
+        <Routes>
+          <Route path="/" element={<App />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/home" element={<Home />} />
+          <Route path='/addblog' element={<AddBlog />} />
+          <Route path='/blog' element={<Blog />} />
+          <Route path='/showbody/:blogId' element={<Showbody />} />
+        </Routes>
       </BrowserRouter>
     </div>
   )

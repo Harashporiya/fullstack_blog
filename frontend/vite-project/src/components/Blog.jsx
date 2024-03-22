@@ -7,7 +7,7 @@ import Cookies from 'js-cookie';
 
 function Blog() {
   const navigate = useNavigate();
-  const [userData, setUserData] = useState({ });
+  const [userData, setUserData] = useState({});
   const [blogs, setBlogs] = useState([]);
 
   useEffect(() => {
@@ -15,7 +15,7 @@ function Blog() {
       try {
         const token = Cookies.get("authorisation")
         const response = await axios.get("http://localhost:5000/blog/get/user");
-        headers: {authorisation:token}
+        headers: { authorisation: token }
         setBlogs(response.data);
       } catch (error) {
         console.log("Error fetching data:", error);
@@ -36,26 +36,26 @@ function Blog() {
 
 
 
-  useEffect(()=>{
-   
-    const fetchData = async ()=>{
-      try{
-        const token = Cookies.get("authorisation")
-       
-     const response = await axios.get("http://localhost:5000/user/data",{
-      headers: {authorisation:token}
-     })
-     setUserData(response.data);
-    //  console.log(response.data)
-    } catch(error){
-    navigate('/login')
-    console.log("Error", error);
-  }
-  }
-    fetchData();
-  },[]);
+  useEffect(() => {
 
- 
+    const fetchData = async () => {
+      try {
+        const token = Cookies.get("authorisation")
+
+        const response = await axios.get("http://localhost:5000/user/data", {
+          headers: { authorisation: token }
+        })
+        setUserData(response.data);
+        //  console.log(response.data)
+      } catch (error) {
+        navigate('/login')
+        console.log("Error", error);
+      }
+    }
+    fetchData();
+  }, []);
+
+
 
   return (
     <>
@@ -70,15 +70,15 @@ function Blog() {
               <div className='p-4'>
                 <h4 className='text-white font-semibold mb-2'>{blog.title}</h4>
                 <p className='text-gray-300 font-semibold'>{blog.descreption}</p>
-            
-               
-                  {/* <button
+
+
+                {/* <button
                     onClick={() => handleDelete(blog._id)}
                     className='mt-2 text-white bg-red-600 px-4 py-2 rounded-md font-semibold'
                   >
                     Delete
                   </button> */}
-               
+
               </div>
             </div>
           ))}

@@ -8,35 +8,35 @@ import 'react-toastify/dist/ReactToastify.css';
 
 function AddBlog() {
   const [descreption, setDescreption] = useState('');
-  const [userData, setUserData] = useState({ });
+  const [userData, setUserData] = useState({});
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
   const [coverImageURL, setCoverImageURL] = useState('');
 
   const navigate = useNavigate();
 
- 
 
 
 
-  useEffect(()=>{
-   
-    const fetchData = async ()=>{
-      try{
+
+  useEffect(() => {
+
+    const fetchData = async () => {
+      try {
         const token = Cookies.get("authorisation")
-       
-     const response = await axios.get("http://localhost:5000/user/data",{
-      headers: {authorisation:token}
-     })
-     setUserData(response.data);
-    //  console.log(response.data)
-    } catch(error){
-    navigate('/login')
-    console.log("Error", error);
-  }
-  }
+
+        const response = await axios.get("http://localhost:5000/user/data", {
+          headers: { authorisation: token }
+        })
+        setUserData(response.data);
+        //  console.log(response.data)
+      } catch (error) {
+        navigate('/login')
+        console.log("Error", error);
+      }
+    }
     fetchData();
-  },[]);
+  }, []);
 
 
 
@@ -48,7 +48,7 @@ function AddBlog() {
         title,
         body,
         coverImageURL,
-       
+
       });
       toast.info("Create Blog  Successfully", { position: "top-right" });
       console.log(response.data);
@@ -56,7 +56,7 @@ function AddBlog() {
       setDescreption('');
       setBody('');
       setCoverImageURL('');
-     
+
     } catch (error) {
       console.log("error", error);
     }
@@ -85,8 +85,8 @@ function AddBlog() {
               <label className="block mb-1 font-bold text-gray-500" htmlFor='coverImageURL'>Cover Image URL</label>
               <input onChange={(e) => setCoverImageURL(e.target.value)} type="url" className="w-full border-2 border-gray-200 p-3 rounded outline-none focus:border-blue-600" />
             </div>
-            
-  
+
+
             <button className="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-lg px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700" type="submit">Submit</button>
           </form>
         </div>

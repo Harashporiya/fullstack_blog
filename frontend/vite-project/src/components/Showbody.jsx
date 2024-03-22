@@ -12,7 +12,7 @@ function Showbody() {
   const [blog, setBlog] = useState(null);
   // const [blogs, setBlogs] = useState([]);
   const [userData, setUserData] = useState({});
-  const [comment, setComment] = useState();
+
 
 
   useEffect(() => {
@@ -48,10 +48,10 @@ function Showbody() {
     fetchData();
   }, [navigate]);
 
-  
 
 
- 
+
+
 
   return (
     <>
@@ -60,26 +60,30 @@ function Showbody() {
         <div className='flex flex-wrap justify-center'>
           {blog && (
             <div className=' rounded-lg overflow-hidden shadow-md mx-4 my-4 '>
-              <img id='img' className=' rounded-lg ' src={blog.coverImageURL} alt='' />
               <div className='p-4'>
                 <h4 className='text-white font-semibold mb-2'>{blog.title}</h4>
-                <p className='text-gray-300 font-semibold'>{blog.description}</p>
+                <p className='text-gray-300 font-semibold'>{blog.descreption}</p>
+              </div>
+              <img id='img' className=' rounded-lg ' src={blog.coverImageURL} alt='' />
+              <div className='p-4'>
+
                 <p className='text-white mt-2'>{blog.body}</p>
               </div>
             </div>
           )}
-          {/* <button
+
+
+
+        </div>
+        {/* <button
             onClick={() => handleDelete(blog._id)}
             className='mt-2 text-white bg-red-600 px-4 py-2 rounded-md font-semibold'
           >
             Delete
           </button> */}
-       
-         
-        </div>
-        <Comment/>
+        <Comment />
       </div>
-     
+
 
     </>
   );

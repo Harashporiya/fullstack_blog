@@ -22,18 +22,25 @@ function Login() {
         email,
         password,
       });
-      toast.info(response.data.message, {
-        position: "top-right"
-      });
+
       console.log(response.data);
       Cookies.set("authorisation", response.data.token);
-      navigate("/home")
 
+      setTimeout(() => {
+        navigate("/home");
+      }, 6000);
 
+      toast.success(response.data.message, {
+        position: "top-right"
+      });
+     
       setEmail("");
       setPassword("");
     } catch (error) {
       console.error("Error login:", error);
+      toast.error(error.message, { 
+        position: "top-right"
+      });
     }
   };
 

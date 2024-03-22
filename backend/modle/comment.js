@@ -1,21 +1,21 @@
 
-const {Schema, model} = require("mongoose");
+const { Schema, model } = require("mongoose");
 
-const commentSchema = new Schema ({
-    content:{
-        type:String,
-        required:true,
+const commentSchema = new Schema({
+    content: {
+        type: String,
+        required: true,
     },
-    blogId:{
+    blogId: {
         type: Schema.Types.ObjectId,
         ref: "blog",
 
     },
-    createdBy:{
+    createdBy: {
         type: Schema.Types.ObjectId,
         ref: "user",
     },
-},{timestamps:true}) ;
+}, { timestamps: true });
 
 const comment = model("comment", commentSchema);
 
