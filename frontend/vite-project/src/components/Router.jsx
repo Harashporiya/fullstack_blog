@@ -7,6 +7,7 @@ import Home from './Home'
 import AddBlog from './AddBlog'
 import Blog from './Blog'
 import Showbody from './Showbody'
+import About from './About'
 function Router() {
   return (
     <div>
@@ -19,6 +20,7 @@ function Router() {
           <Route path='/addblog' element={<AddBlog />} />
           <Route path='/blog' element={<Blog />} />
           <Route path='/showbody/:blogId' element={<Showbody />} />
+          <Route path='/about' element={<About/>}/>
         </Routes>
       </BrowserRouter>
     </div>

@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+
 function AddBlog() {
   const [descreption, setDescreption] = useState('');
   const [userData, setUserData] = useState({});
@@ -66,23 +67,23 @@ function AddBlog() {
     <div>
       <Navbar />
       <div className="min-h-screen flex items-center justify-center bg-gray-900">
-        <div className="bg-white p-16 rounded-2xl shadow-2xl w-2/3">
-          <h2 className="text-3xl font-bold mb-10 text-gray-800">Add Blog</h2>
+        <div className="bg-sky-900 p-16  rounded-2xl shadow-2xl w-2/3">
+          <h2 className="text-3xl font-bold mb-10 text-gray-100">Add Blog</h2>
           <form onSubmit={handleSubmit} className="space-y-5">
             <div>
-              <label className="block mb-1 font-bold text-gray-500" htmlFor='title'>Title</label>
+              <label className="block mb-1 font-bold text-gray-100" htmlFor='title'>Title</label>
               <input onChange={(e) => setTitle(e.target.value)} type="text" className="w-full border-2 border-gray-200 p-3 rounded outline-none focus:border-blue-600" />
             </div>
             <div>
-              <label className="block mb-1 font-bold text-gray-500" htmlFor='descreption'>Description</label>
+              <label className="block mb-1 font-bold text-gray-100" htmlFor='descreption'>Description</label>
               <input onChange={(e) => setDescreption(e.target.value)} type="text" className="w-full border-2 border-gray-200 p-3 rounded outline-none focus:border-blue-600" />
             </div>
             <div>
-              <label className="block mb-1 font-bold text-gray-500" htmlFor='body'>Body</label>
+              <label className="block mb-1 font-bold text-gray-100" htmlFor='body'>Body</label>
               <input onChange={(e) => setBody(e.target.value)} type="text" className="w-full border-2 border-gray-200 p-3 rounded outline-none focus:border-blue-600" />
             </div>
             <div>
-              <label className="block mb-1 font-bold text-gray-500" htmlFor='coverImageURL'>Cover Image URL</label>
+              <label className="block mb-1 font-bold text-gray-100" htmlFor='coverImageURL'>Cover Image URL</label>
               <input onChange={(e) => setCoverImageURL(e.target.value)} type="url" className="w-full border-2 border-gray-200 p-3 rounded outline-none focus:border-blue-600" />
             </div>
 
@@ -95,5 +96,6 @@ function AddBlog() {
     </div>
   )
 }
+
 
 export default AddBlog;

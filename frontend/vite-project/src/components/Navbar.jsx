@@ -25,7 +25,7 @@ function Navbar() {
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
           <a className="flex items-center space-x-3 ">
    
-            <span className="self-center text-4xl font-semibold  dark:text-white">Blog</span>
+            <span><img src='https://dev-to-uploads.s3.amazonaws.com/uploads/logos/resized_logo_UQww2soKuUsjaOGNB38o.png' alt=''/></span>
           </a>
           <div className="flex md:order-2 space-x-3 md:space-x-0 ">
             <div className='space-x-6'>
@@ -46,7 +46,7 @@ function Navbar() {
                 aria-expanded={open ? 'true' : undefined}
                 onClick={handleClick}
               >
-                <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                <svg className="w-20 h-8 dark:text-blue-500 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
                   <path stroke="currentColor" d="M1 1h15M1 7h15M1 13h15" />
                 </svg>
               </Button>
@@ -74,7 +74,7 @@ function Navbar() {
               <button onClick={() => navigate("/home")} className="text-lg  block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white" >
                 Home
               </button>
-              <button className="text-lg block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white">
+              <button  onClick={()=>navigate("/about")} className="text-lg block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white">
                 About
               </button>
               <button onClick={() => navigate("/addblog")} className="text-lg block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white">

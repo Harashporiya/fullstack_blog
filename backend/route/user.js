@@ -2,7 +2,7 @@ const { Router } = require("express");
 const User = require("../modle/user");
 const router = Router();
 const jwt = require("jsonwebtoken");
-const bcrypt = require("bcryptjs");
+// const bcrypt = require("bcryptjs");
 
 const secretKey = "jbvieublvdubfvldfbvliufbvdufb";
 
@@ -10,13 +10,13 @@ router.post("/signup", async (req, res) => {
     const { firstname, lastname, email, password, profileImageURL } = req.body;
 
     try {
-        const hashedPassword = await bcrypt.hash(password, 10);
+        // const hashedPassword = await bcrypt.hash(password, 10);
 
         const createdUser = await User.create({
             firstname: firstname,
             lastname: lastname,
             email: email,
-            password: hashedPassword,
+            password: password,
             profileImageURL: profileImageURL,
         });
         const token = jwt.sign({ userId: createdUser._id }, secretKey, { expiresIn: "5d" });
@@ -28,7 +28,7 @@ router.post("/signup", async (req, res) => {
 
 router.post("/login", async (req, res) => {
     try {
-        const { email, password } = req.body;
+        const { email } = req.body;
         const user = await User.findOne({ email });
 
         if (!user) {
@@ -37,13 +37,13 @@ router.post("/login", async (req, res) => {
             });
         }
 
-        const isPasswordValid = await bcrypt.compare(password, user.password);
+        // const isPasswordValid = await bcrypt.compare(password, user.password);
 
-        if (!isPasswordValid) {
-            return res.status(401).json({
-                error: "Invalid Username and Password",
-            });
-        }
+        // if (!isPasswordValid) {
+        //     return res.status(401).json({
+        //         error: "Invalid Username and Password",
+        //     });
+        // }
 
         const token = jwt.sign({ userId: user._id }, secretKey, { expiresIn: "5d" });
         return res.status(201).json({ token, user, message: "Logged In Successfully" });
