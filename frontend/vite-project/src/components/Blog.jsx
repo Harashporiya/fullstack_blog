@@ -60,7 +60,7 @@ function Blog() {
   return (
     <>
       <Navbar />
-      <div className='pt-40 bg-gray-900 min-h-screen p-8'>
+      <div className='pt-24 bg-gray-900 min-h-screen p-8'>
         <div className='flex flex-wrap justify-center'>
           {blogs.map((blog) => (
             <div key={blog.id} className='bg-sky-900 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 rounded-lg overflow-hidden shadow-md mx-4 my-4'>

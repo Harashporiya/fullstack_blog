@@ -25,7 +25,7 @@ function Navbar() {
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
           <a className="flex items-center space-x-3 ">
    
-            <span><img src='https://dev-to-uploads.s3.amazonaws.com/uploads/logos/resized_logo_UQww2soKuUsjaOGNB38o.png' alt=''/></span>
+            <span><img className='w-16' src='https://dev-to-uploads.s3.amazonaws.com/uploads/logos/resized_logo_UQww2soKuUsjaOGNB38o.png' alt=''/></span>
           </a>
           <div className="flex md:order-2 space-x-3 md:space-x-0 ">
             <div className='space-x-6'>
@@ -62,6 +62,7 @@ function Navbar() {
                
 
                 <MenuItem onClick={() => { handleClose(); navigate("/home"); }}>Home</MenuItem>
+                <MenuItem onClick={() => { handleClose(); navigate("/about"); }}>About</MenuItem>
                 <MenuItem onClick={() => { handleClose(); navigate("/addblog"); }}>Add Blog</MenuItem>
                 <MenuItem onClick={() => { handleClose(); navigate("/blog"); }}>Blog</MenuItem>
                 <MenuItem onClick={() => { handleClose(); navigate("/signup"); }}>Signup</MenuItem>

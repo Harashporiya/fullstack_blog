@@ -58,7 +58,7 @@ function Home() {
   return (
     <>
       <Navbar />
-      <div className='pt-40 bg-gray-900 min-h-screen p-8'>
+      <div className='pt-20 bg-gray-900 min-h-screen p-8'>
         <div>
           {blogs.map((blog) => (
             <div key={blog._id} id='card' className='overflow-hidden mx-4 my-4 flex justify-between'>

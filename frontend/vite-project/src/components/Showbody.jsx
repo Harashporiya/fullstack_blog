@@ -56,7 +56,7 @@ function Showbody() {
   return (
     <>
       <Navbar />
-      <div className='pt-40 bg-gray-900 min-h-screen p-8'>
+      <div className='pt-28 bg-gray-900 min-h-screen p-8'>
         <div className='flex flex-wrap justify-center'>
           {blog && (
             <div className=' rounded-lg overflow-hidden shadow-md mx-4 my-4 '>
@@ -67,7 +67,7 @@ function Showbody() {
               <img id='img' className=' rounded-lg ' src={blog.coverImageURL} alt='' />
               <div className='p-4'>
 
-                <p className='text-white mt-2'>{blog.body}</p>
+                <p className='text-white mt-2 text-xl'>{blog.body}</p>
               </div>
             </div>
           )}
