@@ -23,7 +23,7 @@ function Login() {
         password,
       });
 
-      console.log(response.data);
+      // console.log(response.data);
       Cookies.set("authorisation", response.data.token);
 
       setTimeout(() => {
@@ -45,7 +45,7 @@ function Login() {
   };
 
   return (
-    <><Navbar />
+    <><Navbar /> 
       <div className='bg-gray-900 min-h-screen flex justify-center items-center'>
 
 

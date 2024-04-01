@@ -28,7 +28,7 @@ export default function Signup() {
         password,
       });
 
-      console.log(response.data);
+      // console.log(response.data);
 
       Cookies.set("authorization", response.data.token);
 

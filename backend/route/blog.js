@@ -2,7 +2,7 @@ const { Router } = require("express");
 const router = Router();
 const Blog = require("../modle/blog");
 const Comment = require("../modle/comment");
-
+const jwt = require("jsonwebtoken");
 
 
 
@@ -22,7 +22,8 @@ router.get("/blogId/:id", async (req, res) => {
 
 router.get("/get/all", async (req, res) => {
   try {
-    const blogs = await Blog.find();
+    //const blogs = await Blog.find();
+    const blogs = await Blog.find({}).populate('createdBy');
     res.json(blogs);
   } catch (err) {
     console.error(err);
@@ -47,17 +48,21 @@ router.delete("/delete/:id", async (req, res) => {
 
 
 router.post("/add-new", async (req, res) => {
+  const token = req.headers["authorization"].split(" ")[1];
+
   try {
+    const decoded = jwt.decode(token);
     const { descreption, title, body, coverImageURL, createdBy } = req.body;
     const blog = await Blog.create({
       descreption,
       body,
       title,
       coverImageURL,
-
-      createdBy,
-      //  createdBy: req.user._id,
+      createdBy: decoded.userId,
+      // createdBy: decoded.username 
+      // createdBy: createdUser._id 
     });
+    // console.log(blog);
     return res.status(201).json(blog);
   } catch (err) {
     console.error(err);
@@ -85,12 +90,15 @@ router.get('/get/user', async (req, res) => {
 
 
 router.post("/comment/:blogId", async (req, res) => {
+  const token = req.headers["authorization"].split(" ")[1];
+ 
   try {
-
+    const decoded = jwt.decode(token);
     const comment = await Comment.create({
       content: req.body.content,
       blogId: req.params.blogId,
       // createdBy: req.user._id,
+      createdBy: decoded.userId,
 
     });
 
@@ -108,7 +116,7 @@ router.post("/comment/:blogId", async (req, res) => {
 
 router.get("/all/:blogId/comment", async (req, res) => {
   try {
-    const comments = await Comment.find({ blogId: req.params.blogId });
+    const comments = await Comment.find({ blogId: req.params.blogId }).populate("createdBy");
     res.json(comments);
   } catch (err) {
     console.error(err);

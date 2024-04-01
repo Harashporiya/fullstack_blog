@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-
+import Cookies from "js-cookie";
 import './index.css'
 
 function Comment() {
@@ -10,11 +10,12 @@ function Comment() {
   const { blogId } = useParams();
 
 
-  const token = localStorage.getItem('authorisation');
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      const token = Cookies.get("authorisation");
       const response = await axios.post(
         `http://localhost:5000/blog/comment/${blogId}`,
         { content },
@@ -81,6 +82,10 @@ function Comment() {
       <div className="mt-5 ml-5">
         {comments.map(comment => (
           <div key={comment._id} className="max-w-sm bg-gray-200 rounded-lg p-2 my-1">
+            <div className='flex'>
+            <img src={comment.createdBy.profileImageURL} alt='' className='rounded-full w-16 h-16 ' />
+            <div className='pt-4 ml-3'>{comment.createdBy.firstname} {comment.createdBy.lastname}</div>
+            </div>
             <div className='bg-gray-900 text-white p-3 rounded-xl'>
               <p >{comment.content}</p>
               <p>{comment.createdAt}</p>

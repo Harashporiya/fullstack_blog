@@ -20,6 +20,7 @@ function Home() {
     const fetchData = async () => {
       try {
         const response = await axios.get("http://localhost:5000/blog/get/all");
+        // console.log(response.data);
         setBlogs(response.data);
 
         const initialLikes = {};
@@ -59,30 +60,33 @@ function Home() {
     <>
       <Navbar />
       <div className='pt-20 bg-gray-900 min-h-screen p-8'>
-        <div>
-          {blogs.map((blog) => (
-            <div key={blog._id} id='card' className='overflow-hidden mx-4 my-4 flex justify-between'>
-              <div className='p-4 pt-10'>
-                <div onClick={() => handleShowBody(blog._id)}>
-
-                  <h4 className='text-white font-semibold mb-2'>{blog.title}</h4>
-                  <p className='text-gray-300 font-semibold'>{blog.descreption}</p>
-
-                </div>
-                <p className='text-gray-500 font-semibold'>{blog.createdAt}</p>
-                <div className='text-white flex justify-between w-20 pt-6 '>
-                  <FaRegThumbsUp className='text-white ' onClick={() => handleLikeClick(blog._id)} />
-                  <span className='text-white'>{likes[blog._id]}</span>
-                  <FaRegThumbsDown onClick={() => handledisLikeClick(blog._id)} />
-                  <span className='text-white'>{dislikes[blog._id]}</span>
-                </div>
-              </div>
-
-              <img className='p-8 rounded-t-lg' src={blog.coverImageURL} alt='' />
-            </div>
-          ))}
+  <div>
+    {blogs.map((blog) => (
+      <div key={blog._id} id='card' className='overflow-hidden mx-4 my-4 flex justify-between'>
+        <div className='p-4 pt-10'>
+          <div className='flex'>
+         
+          <img src={blog.createdBy.profileImageURL} alt='' className='rounded-full w-16 h-16 ' />
+          <div className='text-white pt-4 text-xl font-semibold ml-4'>{blog.createdBy.firstname} {blog.createdBy.lastname}</div>
+          </div>
+          <div onClick={() => handleShowBody(blog._id)} className='cursor-pointer'>
+            <h4 className='text-white font-semibold mb-2'>{blog.title}</h4>
+            <p className='text-gray-300 font-semibold'>{blog.description}</p>
+          </div>
+          <p className='text-gray-500 font-semibold'>{blog.createdAt}</p>
+          <div className='text-white flex justify-between items-center w-24 pt-6'>
+            <FaRegThumbsUp className='text-white cursor-pointer' onClick={() => handleLikeClick(blog._id)} />
+            <span className='text-white'>{likes[blog._id]}</span>
+            <FaRegThumbsDown className='text-white cursor-pointer' onClick={() => handledisLikeClick(blog._id)} />
+            <span className='text-white'>{dislikes[blog._id]}</span>
+          </div>
         </div>
+        <img src={blog.coverImageURL} alt='' className='p-8 rounded-t-lg' />
       </div>
+    ))}
+  </div>
+</div>
+
     </>
   );
 }
