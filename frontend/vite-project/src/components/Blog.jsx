@@ -14,7 +14,7 @@ function Blog() {
     const fetchData = async () => {
       try {
         const token = Cookies.get("authorisation")
-        const response = await axios.get("http://localhost:5000/blog/get/user");
+        const response = await axios.get("http://localhost:5001/blog/get/user");
         headers: { authorisation: token }
         setBlogs(response.data);
       } catch (error) {
@@ -27,7 +27,7 @@ function Blog() {
 
   const handleDelete = async (blogId) => {
     try {
-      await axios.delete(`http://localhost:5000/blog/delete/${blogId}`);
+      await axios.delete(`http://localhost:5001/blog/delete/${blogId}`);
       setBlogs(blogs.filter(blog => blog._id !== blogId));
     } catch (error) {
       console.log("Error deleting blog:", error);
@@ -42,7 +42,7 @@ function Blog() {
       try {
         const token = Cookies.get("authorisation")
 
-        const response = await axios.get("http://localhost:5000/user/data", {
+        const response = await axios.get("http://localhost:5001/user/data", {
           headers: { authorisation: token }
         })
         setUserData(response.data);

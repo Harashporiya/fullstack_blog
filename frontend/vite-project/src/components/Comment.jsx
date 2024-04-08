@@ -17,7 +17,7 @@ function Comment() {
     try {
       const token = Cookies.get("authorisation");
       const response = await axios.post(
-        `http://localhost:5000/blog/comment/${blogId}`,
+        `http://localhost:5001/blog/comment/${blogId}`,
         { content },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -33,7 +33,7 @@ function Comment() {
   useEffect(() => {
     async function fetchCommentsForBlog() {
       try {
-        const response = await axios.get(`http://localhost:5000/blog/all/${blogId}/comment`);
+        const response = await axios.get(`http://localhost:5001/blog/all/${blogId}/comment`);
         setComments(response.data);
       } catch (error) {
         console.error('Error fetching comments:', error);
@@ -45,7 +45,7 @@ function Comment() {
 
   const handleDeleteComment = async (blogId) => {
     try {
-      await axios.delete(`http://localhost:5000/blog/delete/${blogId}/comment`);
+      await axios.delete(`http://localhost:5001/blog/delete/${blogId}/comment`);
       setComments(comments.filter(comments => comments._id !== blogId));
     } catch (error) {
       console.log("Error deleting blog:", error);
@@ -82,10 +82,14 @@ function Comment() {
       <div className="mt-5 ml-5">
         {comments.map(comment => (
           <div key={comment._id} className="max-w-sm bg-gray-200 rounded-lg p-2 my-1">
-            <div className='flex'>
-            <img src={comment.createdBy.profileImageURL} alt='' className='rounded-full w-16 h-16 ' />
-            <div className='pt-4 ml-3'>{comment.createdBy.firstname} {comment.createdBy.lastname}</div>
-            </div>
+          <div className='flex'>
+  <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQU__UzGcTo0GOAf11f211PZ2wGfMsX--5kBg&usqp=CAU' alt='' className='rounded-full w-16 h-16 ' />
+  {/* {comment.createdBy && // Check if createdBy is not null */}
+    <div className='text-gray-900 pt-4 text-xl font-semibold ml-4'>
+     <p className='text-gray-900'> {comment.createdBy.firstname} {comment.createdBy.lastname}</p>
+    </div>
+  {/* } */}
+</div>
             <div className='bg-gray-900 text-white p-3 rounded-xl'>
               <p >{comment.content}</p>
               <p>{comment.createdAt}</p>

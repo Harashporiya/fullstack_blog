@@ -20,7 +20,7 @@ function AddBlog() {
       try {
         const token = Cookies.get("authorisation");
         // console.log(token);
-        const response = await axios.get("http://localhost:5000/user/data", {
+        const response = await axios.get("http://localhost:5001/user/data", {
           headers: { authorisation: token },
         });
         setUserData(response.data);
@@ -39,7 +39,7 @@ function AddBlog() {
 
       const token = Cookies.get("authorisation");
       const response = await axios.post(
-        "http://localhost:5000/blog/add-new",
+        "http://localhost:5001/blog/add-new",
       
         {
           descreption,
@@ -52,6 +52,9 @@ function AddBlog() {
       );
       toast.info("Create Blog  Successfully", { position: "top-right" });
       // console.log(response.data);
+      setTimeout(() => {
+        navigate("/home")
+      },6000);
       setTitle("");
       setDescreption("");
       setBody("");

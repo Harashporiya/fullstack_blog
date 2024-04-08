@@ -16,7 +16,7 @@ function Showbody() {
 
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/blog/blogId/${blogId}`)
+    axios.get(`http://localhost:5001/blog/blogId/${blogId}`)
       .then((res) => setBlog(res.data))
       .catch((error) => console.error("Error fetching blog:", error));
   }, [blogId]);
@@ -24,7 +24,7 @@ function Showbody() {
 
   // const handleDelete = async (blogId) => {
   //   try {
-  //     await axios.delete(`http://localhost:5000/blog/delete/${blogId}`);
+  //     await axios.delete(`http://localhost:5001/blog/delete/${blogId}`);
   //     setBlogs(blogs.filter(blog => blog._id !== blogId));
   //   } catch (error) {
   //     console.log("Error deleting blog:", error);
@@ -36,7 +36,7 @@ function Showbody() {
       try {
         const token = Cookies.get("authorisation");
         // console.log(token)
-        const response = await axios.get("http://localhost:5000/user/data", {
+        const response = await axios.get("http://localhost:5001/user/data", {
           headers: { authorisation: token }
         });
         setUserData(response.data);

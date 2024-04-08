@@ -19,8 +19,8 @@ function Home() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/blog/get/all");
-        // console.log(response.data);
+        const response = await axios.get("http://localhost:5001/blog/get/all");
+        console.log(response.data);
         setBlogs(response.data);
 
         const initialLikes = {};
@@ -64,11 +64,14 @@ function Home() {
     {blogs.map((blog) => (
       <div key={blog._id} id='card' className='overflow-hidden mx-4 my-4 flex justify-between'>
         <div className='p-4 pt-10'>
-          <div className='flex'>
-         
-          <img src={blog.createdBy.profileImageURL} alt='' className='rounded-full w-16 h-16 ' />
-          <div className='text-white pt-4 text-xl font-semibold ml-4'>{blog.createdBy.firstname} {blog.createdBy.lastname}</div>
-          </div>
+        <div className='flex'>
+  <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQU__UzGcTo0GOAf11f211PZ2wGfMsX--5kBg&usqp=CAU' alt='' className='rounded-full w-16 h-16 ' />
+  {blog.createdBy && // Check if createdBy is not null
+    <div className='text-white pt-4 text-xl font-semibold ml-4'>
+      {blog.createdBy.firstname} {blog.createdBy.lastname}
+    </div>
+  }
+</div>
           <div onClick={() => handleShowBody(blog._id)} className='cursor-pointer'>
             <h4 className='text-white font-semibold mb-2'>{blog.title}</h4>
             <p className='text-gray-300 font-semibold'>{blog.description}</p>

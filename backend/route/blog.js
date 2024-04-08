@@ -49,9 +49,10 @@ router.delete("/delete/:id", async (req, res) => {
 
 router.post("/add-new", async (req, res) => {
   const token = req.headers["authorization"].split(" ")[1];
-
+   console.log(token)
   try {
     const decoded = jwt.decode(token);
+    console.log(decoded)
     const { descreption, title, body, coverImageURL, createdBy } = req.body;
     const blog = await Blog.create({
       descreption,
@@ -62,7 +63,7 @@ router.post("/add-new", async (req, res) => {
       // createdBy: decoded.username 
       // createdBy: createdUser._id 
     });
-    // console.log(blog);
+    console.log(blog);
     return res.status(201).json(blog);
   } catch (err) {
     console.error(err);
